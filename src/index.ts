@@ -25,6 +25,8 @@ export class rosApi {
     }
 
     user() {
-
+        return {
+            authenticate
+        }
     }
 }
