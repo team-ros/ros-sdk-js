@@ -4,7 +4,10 @@
   "description": "A JavaScript SDK for ROS",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node ./lib",
+    "test": "np run build && npm start",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -20,5 +23,7 @@
   "dependencies": {
     "axios": "^0.19.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "typescript": "^4.0.2"
+  }
 }
