@@ -9,6 +9,7 @@ export const authenticate = (method: "login" | "register") => {
             throw "could not authenticate user"
         }
         fetch(`${endpoint}/user/authenticate`, {
+            method: "POST",
             headers: {
                 authorization: String(token),
                 existing_user: method === "login" ? String(true) : String(false)
