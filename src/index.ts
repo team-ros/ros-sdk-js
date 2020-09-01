@@ -3,7 +3,7 @@ import { setToken, getToken, saveToken, deleteToken } from "./store/token"
 import { authenticate } from "./user/authenticate"
 
 
-class rosApi {
+export class rosApi {
     constructor(endpoint: string) {
         try {
             if(setEndpoint(endpoint)) {
