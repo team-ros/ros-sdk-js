@@ -1,26 +1,35 @@
-import { getToken } from "../store/token"
-import { getEndpoint } from "../store/endpoint"
+import { endpointStore, tokenStore } from "../store"
+import axios from "axios"
 
-export const authenticate = (method: "login" | "register") => {
-    return new Promise( data => {
-        const endpoint = getEndpoint()
-        const token = getToken()
-        if(!endpoint && !token) {
-            throw "could not authenticate user"
+export  { tokenStore }
+
+export const authenticate = (type: "login" | "register") => {
+    return new Promise(data => {
+        const token = tokenStore.getToken()
+        const endpoint = endpointStore.getEndpoint()
+
+
+        if(!token) throw "token is invalid"
+        if(!endpoint) throw "endpoint is not set"
+
+
+        const headers = {
+            authorization: token,
+            existing_user: type === "register" ? false : true
         }
-        fetch(`${endpoint}/user/authenticate`, {
+
+        axios({
             method: "POST",
-            headers: {
-                authorization: String(token),
-                existing_user: method === "login" ? String(true) : String(false)
-            }
+            url: `${endpoint}/user/authenticate`,
+            headers,
         })
-        .then(res => res.json())
-        .then(res => {
-            data(res)
+        .then(response => {
+            console.log(response.data)
+            data(response.data)
         })
         .catch(err => {
-            throw err
+            console.log(err)
         })
+
     })
 }

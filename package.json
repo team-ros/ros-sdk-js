@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/team-ros/ros-sdk-js#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.19.2"
+  },
+  "devDependencies": {
     "typescript": "^4.0.3"
   }
 }

@@ -106,3 +106,6 @@ dist
 # Compiled Javascript Code
 *.js
 lib
+
+# tests
+tests
