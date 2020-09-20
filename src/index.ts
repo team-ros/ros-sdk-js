@@ -12,6 +12,9 @@ export class rosapi {
         return {
             set(token: string) {
                 tokenStore.setToken(token)
+            },
+            delete(): void {
+                tokenStore.deleteToken()
             }
         }
     }

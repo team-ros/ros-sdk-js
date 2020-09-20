@@ -7,6 +7,7 @@ class EndpointStore {
 
     public setEndpoint(endpoint: string): void {
         if(!endpoint) throw "no endpoint set"
+        if(!/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/.test(endpoint)) throw "endpoint is not a url"
         this.endpoint = endpoint
     }
 
@@ -25,14 +26,30 @@ class TokenStore {
 
     public setToken(token: string): void {
         if(!token) throw "no token set"
-        //if(!/^[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*$/.test(token))throw "token does not comply with jwt spec"
+        if(!/^[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*$/.test(token))throw "token does not comply with jwt spec"
         this.token = token
+        if(!Boolean(process.env.DEV)) localStorage.setItem("token", token)
     }
 
     public getToken(): string | boolean {
-        console.log(this.token)
+        if(!Boolean(process.env.DEV)){
+            if(!localStorage.getItem("token")) {
+                return localStorage.getItem("token") || false
+            }
+        }
         if(!this.token) return false
         return this.token
+    }
+
+    public deleteToken(): void {
+        if(!Boolean(process.env.DEV)) {
+            if(localStorage.getItem("token")) {
+                localStorage.removeItem("token")
+            }
+            if(this.token) {
+                this.token = null
+            }
+        }
     }
 }
 

@@ -24,11 +24,10 @@ export const authenticate = (type: "login" | "register") => {
             headers,
         })
         .then(response => {
-            console.log(response.data)
             data(response.data)
         })
         .catch(err => {
-            console.log(err)
+            throw err
         })
 
     })
