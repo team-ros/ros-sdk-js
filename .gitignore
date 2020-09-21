@@ -104,8 +104,4 @@ dist
 .tern-port
 
 # Compiled Javascript Code
-*.js
 lib
-
-# tests
-tests

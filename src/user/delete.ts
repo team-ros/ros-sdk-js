@@ -1,24 +1,21 @@
 import { endpointStore, tokenStore } from "../store"
 import axios from "axios"
 
-export const authenticate = (type: "login" | "register") => {
+export const deleteNow = () => {
     return new Promise(data => {
         const token = tokenStore.getToken()
         const endpoint = endpointStore.getEndpoint()
 
-
         if(!token) throw "token is invalid"
         if(!endpoint) throw "endpoint is not set"
 
-
         const headers = {
-            authorization: token,
-            existing_user: type === "register" ? false : true
+            authorization: token
         }
 
         axios({
             method: "POST",
-            url: `${endpoint}/user/authenticate`,
+            url: `${endpoint}/user/delete`,
             headers
         })
         .then(response => {
@@ -27,6 +24,5 @@ export const authenticate = (type: "login" | "register") => {
         .catch(err => {
             throw err
         })
-
     })
 }

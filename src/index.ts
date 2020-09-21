@@ -2,6 +2,7 @@ import { endpointStore, tokenStore } from "./store"
 
 // import user functions
 import { authenticate } from "./user/authenticate"
+import { deleteNow } from "./user/delete"
 
 export class rosapi {
     constructor(endboint: string) {
@@ -21,11 +22,12 @@ export class rosapi {
 
     user() {
         return {
-            authenticate
+            authenticate,
+            deleteNow
         }
     }
 
     object() {
-
+       
     }
 }
