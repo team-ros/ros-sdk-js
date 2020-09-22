@@ -22,7 +22,7 @@ export const deleteNow = () => {
             data(response.data)
         })
         .catch(err => {
-            throw err
+            data(err.response.data)
         })
     })
 }

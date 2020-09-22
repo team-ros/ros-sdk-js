@@ -2,9 +2,18 @@ const { rosapi } = require("../lib")
 
 const api = new rosapi("https://api.dev.ros-cloud.at")
 
-api.token().set("eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlNjYzOGY4NDlkODVhNWVkMGQ1M2NkNDI1MzE0Y2Q1MGYwYjY1YWUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcm9zLWNsb3VkLWNjNzExIiwiYXVkIjoicm9zLWNsb3VkLWNjNzExIiwiYXV0aF90aW1lIjoxNjAwNzczNDQ3LCJ1c2VyX2lkIjoiYkw5dHpMMlBGSlB1OFBXTnFQSFlBNWFnSDRmMiIsInN1YiI6ImJMOXR6TDJQRkpQdThQV05xUEhZQTVhZ0g0ZjIiLCJpYXQiOjE2MDA3NzM0NDcsImV4cCI6MTYwMDc3NzA0NywiZW1haWwiOiJ0dTM1Njd1NTZ1QHR1bWFpbC5uZXQiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidHUzNTY3dTU2dUB0dW1haWwubmV0Il19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.ODCvPmPo3HVg1pIS_d4Zvsp5ozQKxloZweSVwYNRo2PYhEAHcUnfXh47OASwu6cXhVubrJynvOUOlmwagLYdLx6WnmrHgpsp-SpWshHCfY_wUoETX9aDTYV5SZmHKwztnvGE1AFb6YhubyPc5HNK729YL2W9a7hrxILNyPwRySIPAvcBvcXE6kfk2tbKWb-ez4ulLIpxdDLnIfigw-x1UBWRsgV4NDStEQpAQSD9mY9Uhp6U8jUcwBz_AwtemG7fLtoJwQ4pLobUaDcS7xZJjLw6iUla9yQ5up58IlMf8Mgix3FURNzDiRnSW8uZ8oDfmoLkn6Q8NB455yBAvgQnLw")
+api.token().set("eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlNjYzOGY4NDlkODVhNWVkMGQ1M2NkNDI1MzE0Y2Q1MGYwYjY1YWUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcm9zLWNsb3VkLWNjNzExIiwiYXVkIjoicm9zLWNsb3VkLWNjNzExIiwiYXV0aF90aW1lIjoxNjAwNzc3MjczLCJ1c2VyX2lkIjoiU1loeFN0eUpWYVJSNjNtVmJUNnRCZkt1bVNwMSIsInN1YiI6IlNZaHhTdHlKVmFSUjYzbVZiVDZ0QmZLdW1TcDEiLCJpYXQiOjE2MDA3NzcyNzMsImV4cCI6MTYwMDc4MDg3MywiZW1haWwiOiI0NTY0NXQ0NXQyZmRnQHR3ZWVrLm5ldCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyI0NTY0NXQ0NXQyZmRnQHR3ZWVrLm5ldCJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.P7Ql7tU7DU0EY2jANEWlTNmTHm-4ji91HB_swj0kGUhgrHP7QF0VJPzAvSt-wbIwhpFyXQvTW_7EtqppGUkQXTDnrtrxwBnAdt8vfBsCk2bPs-uYUC87xlY1o1cHRnN4ui4SPTXBqCslmCTQy_vT5B6F6QG0Mi_Qqvk6_vQnNPr2JcDMIai4JnYnuxT61PyBRT623rLzPwFeCHnuceCWxNrk_FDt0UwcEA77AsIEezbyT-zL4RIFPPf_kZJixoutCsWw2RmKNpVI1wQeEcLffQDjwbb0245L7es0KPaTXfu9ygMP5dpbsmw6J7WmPvQnyHLW1IjYJ8aB3_sXVss6FA")
 
-api.user().authenticate("login")
+// api.user().authenticate("login")
+// .then(response => {
+//     console.log(response)
+// })
+// .catch(err => {
+//     console.log("an error occured")
+//     console.log(err)
+// })
+
+api.user().deleteNow()
 .then(response => {
     console.log(response)
     console.log("everything went awesome")
@@ -13,16 +22,6 @@ api.user().authenticate("login")
     console.log("an error occured")
     console.log(err)
 })
-
-// api.user().deleteNow()
-// .then(response => {
-//     console.log(response)
-//     console.log("everything went awesome")
-// })
-// .catch(err => {
-//     console.log("an error occured")
-//     console.log(err)
-// })
 
 // api.object().createDir("/Doc2", "Doc1")
 // .then(response => {

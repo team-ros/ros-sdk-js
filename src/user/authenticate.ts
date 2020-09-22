@@ -25,7 +25,7 @@ export const authenticate = (type: "login" | "register") => {
             data(response.data)
         })
         .catch(err => {
-            throw err
+            data(err.response.data)
         })
 
     })

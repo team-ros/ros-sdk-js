@@ -99,8 +99,26 @@ api.user().authenticate("login")
 })
 ```
 
+# Benutzer löschen
+
+Um einen Benutzeraccount zu löschen reicht ein einfacher Aufruf der deleteNow-Funktion. Um den Benutzer vollständig zu löschen, muss er auch aus Firebase entfernt werden.
+
+```js
+api.user().deleteNow()
+.then(response => {
+    // example response if user got successfully deleted
+    { status: true, delete: true, database: true }
+
+    // example response if user does not exist
+    { status: 'invalid', bucket: 'not existing' }
+})
+.catch(err => {
+
+}) 
+```
 
 
+{ status: 'invalid', bucket: 'not existing' }
 
 
 
