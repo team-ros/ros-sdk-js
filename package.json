@@ -1,6 +1,6 @@
 {
   "name": "ros-sdk-js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A JavaScript SDK for ROS",
   "main": "./lib/index.js",
   "scripts": {
