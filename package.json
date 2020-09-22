@@ -9,7 +9,8 @@
     "test": "npm run build && npm start",
     "docs": "typedoc --out docs src",
     "clean": "rm -rf ./lib",
-    "prepublishOnly": "npm run compile"
+    "prepublishOnly": "npm run compile",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
