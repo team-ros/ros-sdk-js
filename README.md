@@ -118,7 +118,4 @@ api.user().deleteNow()
 ```
 
 
-{ status: 'invalid', bucket: 'not existing' }
-
-
 
