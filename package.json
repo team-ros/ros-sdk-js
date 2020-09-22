@@ -10,7 +10,7 @@
     "test": "npm run build && npm start",
     "docs": "typedoc --out docs src",
     "clean": "rm -rf ./lib",
-    "prepublish": "npm run compile",
+    "prepublish": "npm run compile"
   },
   "repository": {
     "type": "git",
