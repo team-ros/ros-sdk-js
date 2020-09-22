@@ -9,7 +9,7 @@
     "start": "node ./lib",
     "test": "npm run build && npm start",
     "docs": "typedoc --out docs src",
-    "prepublish": "tsc"
+    "prepare": "tsc"
   },
   "repository": {
     "type": "git",
