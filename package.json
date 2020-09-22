@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "node ./lib",
     "test": "npm run build && npm start",
-    "doc": "typedoc --out docs src",
+    "docs": "typedoc --out docs src",
     "postinstall": "npm run build"
   },
   "repository": {
