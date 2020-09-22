@@ -4,10 +4,12 @@
   "description": "A JavaScript SDK for ROS",
   "main": "./lib/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run clean && tsc -p",
     "start": "node ./lib",
     "test": "npm run build && npm start",
-    "docs": "typedoc --out docs src"
+    "docs": "typedoc --out docs src",
+    "clean": "rm -rf ./lib",
+    "prepublishOnly": "npm run compile"
   },
   "repository": {
     "type": "git",
