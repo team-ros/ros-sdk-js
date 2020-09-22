@@ -24,6 +24,10 @@ jobs:
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
+      - name:  'Automated Version Bump'
+        uses:  'phips28/gh-action-bump-version@master'
+        with:
+          skip-tag:  'true' 
       - run: npm ci
       - run: npm publish
         env:
