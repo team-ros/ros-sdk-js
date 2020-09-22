@@ -4,9 +4,12 @@ import { endpointStore, tokenStore } from "./store"
 import { authenticate } from "./user/authenticate"
 import { deleteNow } from "./user/delete"
 
+// import object function
+import { createDir } from "./object/create_dir"
+
 export class rosapi {
-    constructor(endboint: string) {
-        endpointStore.setEndpoint(endboint)
+    constructor(endpoint: string) {
+        endpointStore.setEndpoint(endpoint)
     }
 
     token() {
@@ -28,6 +31,8 @@ export class rosapi {
     }
 
     object() {
-       
+       return {
+           createDir
+       }
     }
 }

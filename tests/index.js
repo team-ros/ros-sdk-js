@@ -3,19 +3,29 @@ const { tokenStore } = require("../lib/store")
 
 const api = new rosapi("https://api.dev.ros-cloud.at")
 
-api.token().set("eyJhbGciOiJSUzI1NiIsImtpZCI6IjczNzVhZmY3MGRmZTNjMzNlOTBjYTM2OWUzYTBlZjQxMzE3MmZkODIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcm9zLWNsb3VkLWNjNzExIiwiYXVkIjoicm9zLWNsb3VkLWNjNzExIiwiYXV0aF90aW1lIjoxNjAwNjAwMzg1LCJ1c2VyX2lkIjoiVmdMZkVFdENER1BUZWNHeWJLQlI5TVFrTnpYMiIsInN1YiI6IlZnTGZFRXRDREdQVGVjR3liS0JSOU1Ra056WDIiLCJpYXQiOjE2MDA2MDAzODUsImV4cCI6MTYwMDYwMzk4NSwiZW1haWwiOiJtb2hoYW1lZGxlZUBsZWVtYWlsLm5ldCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJtb2hoYW1lZGxlZUBsZWVtYWlsLm5ldCJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.An_vKVa9PRpfnVOOK_cj60oLhXBGDUetfZWVPAq76x-3DyecPC_oSrMjxJyGq2wznfJdgll9aJjaswZHU6GoMfv_5-vQhcfIO0JpImoO634ECVnCqKjNlJGcxMWSq_W3kNMDOQuaon4H8lk2PsV60sda9F8QYm-KvRU3sTlt-MsMUZ7h01vo7hiU4kRUfY7xs1_fJR5pQKK40VXgsssPrLRwnPOf-chUV6UoDcf3SHIibcIOxD6vjV4Xm7uV4DgXSgQx4rwmzSwPiiAvbJiI0OjHbpXQNXxTgSY1yqk67li4leO85pIfdZ62uYfq77DYao82oT5on-WuEofz---TKw")
+api.token().set("eyJhbGciOiJSUzI1NiIsImtpZCI6IjczNzVhZmY3MGRmZTNjMzNlOTBjYTM2OWUzYTBlZjQxMzE3MmZkODIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcm9zLWNsb3VkLWNjNzExIiwiYXVkIjoicm9zLWNsb3VkLWNjNzExIiwiYXV0aF90aW1lIjoxNjAwNzAzNTM5LCJ1c2VyX2lkIjoiZUxnZU5Ydm1VaFNaODFza1NtdFdlU0hiR3BFMyIsInN1YiI6ImVMZ2VOWHZtVWhTWjgxc2tTbXRXZVNIYkdwRTMiLCJpYXQiOjE2MDA3MDM1MzksImV4cCI6MTYwMDcwNzEzOSwiZW1haWwiOiIxMjEyMTIxMjEyZWpvaXdlcmZAdGVzdG1haWwubmV0IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbIjEyMTIxMjEyMTJlam9pd2VyZkB0ZXN0bWFpbC5uZXQiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.KjSFDrEqIsyysCVZxR6xXVChsS-H26YywSZAUru4akbNCwdCfVnp4j87sRpVW8UgsHsjF3daGGpG-NHVilCEQOCxRVDdx0XHdRAEGMqqoDvtTTMT_JdQ8wT-laLBBrMQvVci50aF7994y5so80NUgkOfUo3c1a23cjR9_6smQVkw_iKT2t-4aJlVxrFRo8lLAyIHXD4tAJ33FzMm8jpo_C7L2yTS57FyHBUmCRqGpsELVpmWKgHKOeoA0uMaU1kHewbt1wf7dkaItR_rVynyASx5KLINoDAH4_CSPvQTnX1hUEb0EsyC8kxWwTAKv7cVGyOQeJUQjye7eqeWdAYYrw")
 
-api.user().authenticate("login")
-.then(response => {
-    console.log(response)
-    console.log("everything went awesome")
-})
-.catch(err => {
-    console.log("an error occured")
-    console.log(err)
-})
+// api.user().authenticate("login")
+// .then(response => {
+//     console.log(response)
+//     console.log("everything went awesome")
+// })
+// .catch(err => {
+//     console.log("an error occured")
+//     console.log(err)
+// })
 
-api.object().createDir("/", "documents")
+// api.user().deleteNow()
+// .then(response => {
+//     console.log(response)
+//     console.log("everything went awesome")
+// })
+// .catch(err => {
+//     console.log("an error occured")
+//     console.log(err)
+// })
+
+api.object().createDir("/Doc2", "Doc1")
 .then(response => {
     console.log(response)
 })
