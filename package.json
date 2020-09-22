@@ -3,14 +3,14 @@
   "version": "1.0.9",
   "description": "A JavaScript SDK for ROS",
   "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
-    "build": "npm run clean && tsc -p",
+    "build": "npm run clean && tsc",
     "start": "node ./lib",
     "test": "npm run build && npm start",
     "docs": "typedoc --out docs src",
     "clean": "rm -rf ./lib",
-    "prepublishOnly": "npm run compile",
-    "postinstall": "npm run build"
+    "prepublish": "npm run compile",
   },
   "repository": {
     "type": "git",
