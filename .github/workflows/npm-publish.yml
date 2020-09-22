@@ -27,7 +27,7 @@ jobs:
       - name:  'Automated Version Bump'
         uses:  'phips28/gh-action-bump-version@master'
         with:
-          skip-tag:  'true' 
+          tag-prefix: ''
       - run: npm ci
       - run: npm publish
         env:
