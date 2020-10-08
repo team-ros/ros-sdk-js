@@ -1,10 +1,10 @@
 const { rosapi } = require("../lib")
 
-const api = new rosapi("https://api.dev.ros-cloud.at")
+const api = new rosapi("https://ros-api-v2.herokuapp.com")
 
-api.token().set("eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlNjYzOGY4NDlkODVhNWVkMGQ1M2NkNDI1MzE0Y2Q1MGYwYjY1YWUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcm9zLWNsb3VkLWNjNzExIiwiYXVkIjoicm9zLWNsb3VkLWNjNzExIiwiYXV0aF90aW1lIjoxNjAwNzgxNzQyLCJ1c2VyX2lkIjoiMHg0Y3JRd2VRMFB0Um0zWGJMdVI0ZmdYU1V3MiIsInN1YiI6IjB4NGNyUXdlUTBQdFJtM1hiTHVSNGZnWFNVdzIiLCJpYXQiOjE2MDA3ODE3NDIsImV4cCI6MTYwMDc4NTM0MiwiZW1haWwiOiJqb2huZGRmb2UyM0Bqb2hubWFpbC5uZXQiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiam9obmRkZm9lMjNAam9obm1haWwubmV0Il19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.eqHU-aHA5hsf_QPs34Kt86l-qI3-BG4chstvY21ATNSGVCiEEqhSPpgWUnzjYs22mMXMzk5XL-cr6MV3x3pXnPD24ciMCXmN7X_Iq96ssi3MJcSPheH9ZqBoiQM6GbTSU9DdcDJebUz9N9R4i968OPhYLUZ1ozzneY-CFY0HB1qBVDHYFVfVqjikrWeB4CJxVqrhm482j4YzHtgRftMkhuARZANtAnlWclECfk9kLXQxyy9hzfIT5cXmbeFeYmHkU25i7ZfN-MvJdYflqPdfSSgclJCMMjigz7bLyLeLHlRZBytspnXB_ZnMM9_ChIxDfD6lJmh0xk667q5xEnYLrw")
+api.token().set("eyJhbGciOiJSUzI1NiIsImtpZCI6IjIzNzA1ZmNmY2NjMTg4Njg2ZjhhZjkyYWJiZjAxYzRmMjZiZDVlODMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcm9zLWNsb3VkLWNjNzExIiwiYXVkIjoicm9zLWNsb3VkLWNjNzExIiwiYXV0aF90aW1lIjoxNjAyMTUzNTg3LCJ1c2VyX2lkIjoicExjekQzdWNVWk9CVWl4ZHpHZWx1cjAxejlGMyIsInN1YiI6InBMY3pEM3VjVVpPQlVpeGR6R2VsdXIwMXo5RjMiLCJpYXQiOjE2MDIxNTM1ODcsImV4cCI6MTYwMjE1NzE4NywiZW1haWwiOiJqb2huZG9lMnMzQGpvaG5tYWlsLm5ldCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJqb2huZG9lMnMzQGpvaG5tYWlsLm5ldCJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.GxQnQFuhPexHbmx5X6Wt4xndE-UkQShHFiH5uYUZj7i_TpMZlOA8tqMDDvsJzZ6IrLujJA7mqD0VrFdNWgtOH_evdfaeMFTmRMnCWFP7Y95TTmCAVeWH384q4KXOh6O61tR5Ks4rQYhfR0NN7zPafeuxPaNOHYhIdQ98jK4TD7FhPsuVUpO8P7uh6SrUQuNpObKmvcHsnvmgxhrQPMrEZAtWo09OqJu5bZ97TX5djfmoIgrq3cMcOa5vL8E41CT4qtcVKMvqm35Xgd0KMb8J7kgrFooKPt7nDhiRLLxrhk8phN8LbwkUE-k82rZyhmfJ8_v-3M8WX642HXTNugGVng")
 
-// api.user().authenticate("register")
+// api.user().login("tim@apple.com")
 // .then(response => {
 //     console.log(response)
 // })
@@ -13,21 +13,21 @@ api.token().set("eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlNjYzOGY4NDlkODVhNWVkMGQ1M2NkNDI
 //     console.log(err)
 // })
 
-api.user().deleteNow()
-.then(response => {
-    console.log(response)
-    console.log("everything went awesome")
-})
-.catch(err => {
-    console.log("an error occured")
-    console.log(err)
-})
-
-// api.object().createDir("/Doc2", "Doc1")
+// api.user().deleteNow()
 // .then(response => {
 //     console.log(response)
+//     console.log("everything went awesome")
 // })
 // .catch(err => {
+//     console.log("an error occured")
 //     console.log(err)
 // })
+
+api.object().createDir("Docs", null)
+.then(response => {
+    console.log(response)
+})
+.catch(err => {
+    console.log(err)
+})
 

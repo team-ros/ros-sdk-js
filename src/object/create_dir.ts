@@ -1,35 +1,37 @@
 import { endpointStore, tokenStore } from "../store"
 import axios from "axios"
 
-export const createDir = (path: string, name: string) => {
-    return new Promise(data => {
-        const token = tokenStore.getToken()
-        const endpoint = endpointStore.getEndpoint()
+export const createDir = async (name: string, parent?: string | null) => {
+
+    const token = tokenStore.getToken()
+    const endpoint = endpointStore.getEndpoint()
 
 
-        if(!token) throw "token is invalid"
-        if(!endpoint) throw "endpoint is not set"
+    if(!token) throw "token is invalid"
+    if(!endpoint) throw "endpoint is not set"
 
 
-        const headers = {
-            authorization: token
-        }
+    const headers = {
+        authorization: `Bearer ${token}`
+    }
 
-        axios({
+    try {
+        const response = await axios({
             method: "POST",
-            url: `${endpoint}/object/create-dir${path}`,
+            url: `${endpoint}/v2/create_dir`,
             data: {
-                folderName: name
+                name,
+                parent: parent ? parent : null
             },
             headers
         })
-        .then(response => {
-            console.log(response)
-            data(response.data)
-        })
-        .catch(err => {
-            data(err.response.data)
-        })
 
-    })
+        return response.data
+    }
+    catch(err) {
+        console.log(err)
+        return false
+    }
+
+
 }

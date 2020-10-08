@@ -1,7 +1,7 @@
 import { endpointStore, tokenStore } from "./store"
 
 // import user functions
-import { authenticate } from "./user/authenticate"
+import { login } from "./user/login"
 import { deleteNow } from "./user/delete"
 
 // import object function
@@ -25,7 +25,7 @@ export class rosapi {
 
     user() {
         return {
-            authenticate,
+            login,
             deleteNow
         }
     }
