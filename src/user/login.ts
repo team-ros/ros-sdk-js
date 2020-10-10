@@ -23,7 +23,9 @@ export const login = async (email: string) => {
             method: "GET",
             url: `${endpoint}/v2/login`,
             headers,
-            params: { email }
+            params: { 
+                email 
+            }
         })
     
         return response.data
