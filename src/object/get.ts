@@ -1,8 +1,8 @@
 import { endpointStore, tokenStore } from "../store"
 import axios from "axios"
 
-export const createDir = async (name: string, parent?: string | null) => {
-
+export const get = async (object_id?: string | null) => {
+    
     const token = tokenStore.getToken()
     const endpoint = endpointStore.getEndpoint()
 
@@ -12,26 +12,26 @@ export const createDir = async (name: string, parent?: string | null) => {
 
 
     const headers = {
-        authorization: `Bearer ${token}`
+        authorization: `Bearer ${token}`,
     }
 
     try {
         const response = await axios({
-            method: "POST",
-            url: `${endpoint}/v2/create_dir`,
-            data: {
-                name,
-                parent: parent ? parent : null
+            method: "GET",
+            url: `${endpoint}/v2/get`,
+            params: {
+                object_id
             },
             headers
         })
-
         return response.data
     }
     catch(err) {
-        console.log(err)
-        return false
+        if(err.response.data) return err.response.data
+        return {
+            status: false,
+            message: "request error",
+            error: err
+        }
     }
-
-
 }

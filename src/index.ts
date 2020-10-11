@@ -1,11 +1,15 @@
 import { endpointStore, tokenStore } from "./store"
 
 // import user functions
-import { authenticate } from "./user/authenticate"
+import { login } from "./user/login"
 import { deleteNow } from "./user/delete"
 
 // import object function
 import { createDir } from "./object/create_dir"
+import { remove } from "./object/remove"
+import { get } from "./object/get"
+import { move } from "./object/move"
+import { upload } from "./object/upload"
 
 export class rosapi {
     constructor(endpoint: string) {
@@ -25,14 +29,18 @@ export class rosapi {
 
     user() {
         return {
-            authenticate,
+            login,
             deleteNow
         }
     }
 
     object() {
        return {
-           createDir
+           createDir,
+           remove,
+           get,
+           move,
+           upload
        }
     }
 }
