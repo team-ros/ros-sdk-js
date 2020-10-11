@@ -6,6 +6,10 @@ import { deleteNow } from "./user/delete"
 
 // import object function
 import { createDir } from "./object/create_dir"
+import { deleteObj } from "./object/delete"
+import { getObj } from "./object/get"
+import { move } from "./object/move"
+import { upload } from "./object/upload"
 
 export class rosapi {
     constructor(endpoint: string) {
@@ -32,7 +36,11 @@ export class rosapi {
 
     object() {
        return {
-           createDir
+           createDir,
+           deleteObj,
+           getObj,
+           move,
+           upload
        }
     }
 }

@@ -1,7 +1,7 @@
 import { endpointStore, tokenStore } from "../store"
 import axios from "axios"
 
-export const getByID = (objectID: string) => {
+export const getObj = (objectID: string) => {
     return new Promise(data => {
         const token = tokenStore.getToken()
         const endpoint = endpointStore.getEndpoint()
