@@ -1,28 +1,33 @@
 import { endpointStore, tokenStore } from "../store"
 import axios from "axios"
 
-export const deleteNow = () => {
-    return new Promise(data => {
-        const token = tokenStore.getToken()
-        const endpoint = endpointStore.getEndpoint()
+export const deleteNow = async () => {
+    
+    const token = tokenStore.getToken()
+    const endpoint = endpointStore.getEndpoint()
 
-        if(!token) throw "token is invalid"
-        if(!endpoint) throw "endpoint is not set"
+    if(!token) throw "token is invalid"
+    if(!endpoint) throw "endpoint is not set"
 
-        const headers = {
-            authorization: token
-        }
+    const headers = {
+        authorization: `Bearer ${token}`
+    }
 
-        axios({
+    try {
+        const response = await axios({
             method: "POST",
             url: `${endpoint}/user/delete`,
             headers
         })
-        .then(response => {
-            data(response.data)
-        })
-        .catch(err => {
-            data(err.response.data)
-        })
-    })
+        return response.data
+    }
+    catch(err) {
+        if(err.response.data) return err.response.data
+        return {
+            status: false,
+            message: "request error",
+            error: err
+        }
+    }
+
 }

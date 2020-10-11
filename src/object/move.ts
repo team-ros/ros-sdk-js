@@ -1,37 +1,38 @@
 import { endpointStore, tokenStore } from "../store"
 import axios from "axios"
 
-export const move = (parent: string, name: string, objectID: string) => {
-    return new Promise(data => {
-        const token = tokenStore.getToken()
-        const endpoint = endpointStore.getEndpoint()
+export const move = async (parent: string, name: string, object_id: string) => {
+    
+    const token = tokenStore.getToken()
+    const endpoint = endpointStore.getEndpoint()
+
+    if(!token) throw "token is invalid"
+    if(!endpoint) throw "endpoint is not set"
 
 
-        if(!token) throw "token is invalid"
-        if(!endpoint) throw "endpoint is not set"
+    const headers = {
+        authorization: `Bearer ${token}`
+    }
 
-
-        const headers = {
-            authorization: token
-        }
-
-        axios({
+    try {
+        const response = await axios({
             method: "POST",
             url: `${endpoint}/v2/move`,
             data: {
                 parent,
-                name: name,
-                object_id: objectID
+                name,
+                object_id
             },
             headers
         })
-        .then(response => {
-            console.log(response)
-            data(response.data)
-        })
-        .catch(err => {
-            data(err.response.data)
-        })
-
-    })
+        return response.data
+    }
+    catch(err) {
+        if(err.response.data) return err.response.data
+        return {
+            status: false,
+            message: "request error",
+            error: err
+        }
+    }
 }

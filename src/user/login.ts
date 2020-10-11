@@ -31,7 +31,12 @@ export const login = async (email: string) => {
         return response.data
     }
     catch(err) {
-        return false
+        if(err.response.data) return err.response.data
+        return {
+            status: false,
+            message: "request error",
+            error: err
+        }
     }
     
 }

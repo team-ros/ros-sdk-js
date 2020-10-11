@@ -1,39 +1,32 @@
 import { endpointStore, tokenStore } from "../store"
 import axios from "axios"
-import FormData from "form-data"
 
-export const upload = async (file: File, parent?: string | null) => {
+export const remove = async (object_id: string) => {
     
     const token = tokenStore.getToken()
     const endpoint = endpointStore.getEndpoint()
 
+
     if(!token) throw "token is invalid"
     if(!endpoint) throw "endpoint is not set"
-    if(!file) throw "no file is set"
 
-
-    const data = new FormData()
-    data.append("file", file)
 
     const headers = {
         authorization: `Bearer ${token}`,
-        ...data.getHeaders()
     }
 
     try {
         const response = await axios({
-            method: "PUT",
-            url: `${endpoint}/v2/upload`,
-            headers,
+            method: "POST",
+            url: `${endpoint}/v2/delete`,
             params: {
-                parent
+                object_id
             },
-            data
+            headers
         })
         return response.data
     }
     catch(err) {
-
         if(err.response.data) return err.response.data
         return {
             status: false,
@@ -41,5 +34,6 @@ export const upload = async (file: File, parent?: string | null) => {
             error: err
         }
     }
+
 
 }

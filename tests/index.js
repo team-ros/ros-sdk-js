@@ -1,15 +1,86 @@
-const { rosapi } = require("../lib")
+// const { rosapi } = require("../lib")
+// const fs = require("fs")
 
-const api = new rosapi("https://ros-api-v2.herokuapp.com")
+// const api = new rosapi("https://ros-api-v2.herokuapp.com")
 
-api.token().set("eyJhbGciOiJSUzI1NiIsImtpZCI6IjIzNzA1ZmNmY2NjMTg4Njg2ZjhhZjkyYWJiZjAxYzRmMjZiZDVlODMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcm9zLWNsb3VkLWNjNzExIiwiYXVkIjoicm9zLWNsb3VkLWNjNzExIiwiYXV0aF90aW1lIjoxNjAyMTUzNTg3LCJ1c2VyX2lkIjoicExjekQzdWNVWk9CVWl4ZHpHZWx1cjAxejlGMyIsInN1YiI6InBMY3pEM3VjVVpPQlVpeGR6R2VsdXIwMXo5RjMiLCJpYXQiOjE2MDIxNTM1ODcsImV4cCI6MTYwMjE1NzE4NywiZW1haWwiOiJqb2huZG9lMnMzQGpvaG5tYWlsLm5ldCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJqb2huZG9lMnMzQGpvaG5tYWlsLm5ldCJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.GxQnQFuhPexHbmx5X6Wt4xndE-UkQShHFiH5uYUZj7i_TpMZlOA8tqMDDvsJzZ6IrLujJA7mqD0VrFdNWgtOH_evdfaeMFTmRMnCWFP7Y95TTmCAVeWH384q4KXOh6O61tR5Ks4rQYhfR0NN7zPafeuxPaNOHYhIdQ98jK4TD7FhPsuVUpO8P7uh6SrUQuNpObKmvcHsnvmgxhrQPMrEZAtWo09OqJu5bZ97TX5djfmoIgrq3cMcOa5vL8E41CT4qtcVKMvqm35Xgd0KMb8J7kgrFooKPt7nDhiRLLxrhk8phN8LbwkUE-k82rZyhmfJ8_v-3M8WX642HXTNugGVng")
+// api.token().set("eyJhbGciOiJSUzI1NiIsImtpZCI6IjIzNzA1ZmNmY2NjMTg4Njg2ZjhhZjkyYWJiZjAxYzRmMjZiZDVlODMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcm9zLWNsb3VkLWNjNzExIiwiYXVkIjoicm9zLWNsb3VkLWNjNzExIiwiYXV0aF90aW1lIjoxNjAyNDM2MzY5LCJ1c2VyX2lkIjoiWm5JaTZ3VHVzRU5mZjlyOU5OS0FNTEs0Mk5CMyIsInN1YiI6IlpuSWk2d1R1c0VOZmY5cjlOTktBTUxLNDJOQjMiLCJpYXQiOjE2MDI0MzYzNjksImV4cCI6MTYwMjQzOTk2OSwiZW1haWwiOiJnenVobGtAYWxpYmFiLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJnenVobGtAYWxpYmFiLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.Is8XNit5tF5P_x7eTFmGLb71Ym3oII93qnchI0dBpz1jBBMuIvE3V6jTasK40RZUlcNeTIgjD-d7hlau_cyKnZCN2pRnPiTEA5bS3TTgVRDf1T9U5s9stI__obQQGRfu3WVNgdCkcr1FlCcUQ_ZtqIGxOdzYSVA626kmWrWjIvs_nxAeCBFvbnZzZkTzCckFnLyPOyN6uPNGHNtThvoDMxWCEhDS49hqJr-a1CUGT-dTfmlYbMT_JjNU4qIMdJT23oNO6y7zLvtH3DM1PH2hxvQn1UsYy9hCGqPm4WBdk9XaJnUjUDWg8vF_pL4cfx8saNb58xTwTNUD1jw6NzfdTQ")
 
+
+// const resting = async () => {
+
+//     // Start Login Test
+//     console.log("Testing login")
+//     try {
+//         const loginResponse = await api.user().login("")
+//         console.log("Success Response", loginResponse)
+//     }
+//     catch(err) {
+//         console.log("Error Response", err)
+//     }
+//     console.log("------------------------------------------")
+//     // End Login Test
+
+//     // Start create_dir Test
+//     console.log("Testing create_dir")
+//     try {
+//         const create_dirResponse = await api.object().createDir("Docs")
+//         console.log("Success Response", create_dirResponse)
+//     }
+//     catch(err) {
+//         console.log("Error Response", err)
+//     }
+//     console.log("------------------------------------------")
+//     // End Login Test
+
+//     // Start get Test
+//     console.log("Testing get")
+//     try {
+//         const getResponse = await api.object().get()
+//         console.log("Success Response", getResponse)
+//     }
+//     catch(err) {
+//         console.log("Error Response", err)
+//     }
+//     console.log("------------------------------------------")
+//     // End get Test
+
+//     // Start upload Test
+//     console.log("Testing upload")
+//     try {
+//         const file = fs.createReadStream("/workspaces/ros-sdk-js/tsconfig.json")
+//         const getResponse = await api.object().upload(file)
+//         console.log("Success Response", getResponse)
+//     }
+//     catch(err) {
+//         console.log("Error Response", err)
+//     }
+//     console.log("------------------------------------------")
+//     // End upload Test
+
+// }
 // api.user().login("tim@apple.com")
+// .then(response => {
+// console.log(response)
+// })
+// .catch(err => {
+// console.log(err)
+// })
+
+// const file = fs.createReadStream("/workspaces/ros-sdk-js/tsconfig.json")
+
+// api.object().upload(file)
+// .then(response => {
+// console.log(response)
+// })
+// .catch(err => {
+// console.log(err)
+// })
+
+// api.object().get()
 // .then(response => {
 //     console.log(response)
 // })
 // .catch(err => {
-//     console.log("an error occured")
 //     console.log(err)
 // })
 
@@ -23,11 +94,11 @@ api.token().set("eyJhbGciOiJSUzI1NiIsImtpZCI6IjIzNzA1ZmNmY2NjMTg4Njg2ZjhhZjkyYWJ
 //     console.log(err)
 // })
 
-api.object().createDir("Docs", null)
-.then(response => {
-    console.log(response)
-})
-.catch(err => {
-    console.log(err)
-})
+// api.object().createDir("Docs", null)
+// .then(response => {
+//     console.log(response)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
 

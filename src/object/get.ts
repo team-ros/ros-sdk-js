@@ -1,34 +1,37 @@
 import { endpointStore, tokenStore } from "../store"
 import axios from "axios"
 
-export const getObj = (objectID: string) => {
-    return new Promise(data => {
-        const token = tokenStore.getToken()
-        const endpoint = endpointStore.getEndpoint()
+export const get = async (object_id?: string | null) => {
+    
+    const token = tokenStore.getToken()
+    const endpoint = endpointStore.getEndpoint()
 
 
-        if(!token) throw "token is invalid"
-        if(!endpoint) throw "endpoint is not set"
+    if(!token) throw "token is invalid"
+    if(!endpoint) throw "endpoint is not set"
 
 
-        const headers = {
-            authorization: token,
-        }
+    const headers = {
+        authorization: `Bearer ${token}`,
+    }
 
-        axios({
+    try {
+        const response = await axios({
             method: "GET",
             url: `${endpoint}/v2/get`,
             params: {
-                object_id: objectID
+                object_id
             },
             headers
         })
-        .then(response => {
-            data(response.data)
-        })
-        .catch(err => {
-            throw err
-        })
-
-    })
+        return response.data
+    }
+    catch(err) {
+        if(err.response.data) return err.response.data
+        return {
+            status: false,
+            message: "request error",
+            error: err
+        }
+    }
 }
