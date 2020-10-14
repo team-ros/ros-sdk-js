@@ -1,7 +1,7 @@
 import { endpointStore, tokenStore } from "../store"
 import axios from "axios"
 
-export const move = async (parent: string, name: string, object_id: string) => {
+export const move = async (parent: string | null, name: string, object_id: string) => {
     
     const token = tokenStore.getToken()
     const endpoint = endpointStore.getEndpoint()

@@ -33,7 +33,6 @@ export const upload = async (file: File, parent?: string | null) => {
         return response.data
     }
     catch(err) {
-
         if(err.response.data) return err.response.data
         return {
             status: false,

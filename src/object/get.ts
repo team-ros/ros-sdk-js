@@ -1,7 +1,21 @@
 import { endpointStore, tokenStore } from "../store"
 import axios from "axios"
 
-export const get = async (object_id?: string | null) => {
+export const get = async (object_id?: string | null): Promise<{
+    status: boolean;
+    listing: {
+        id: string;
+        name: string;
+        parent: string | null;
+        type: 'file' | 'directory';
+        size: number | boolean;
+        data: number;
+    }[];
+} | {
+    status: boolean;
+    message: string;
+    error: any
+}> => {
     
     const token = tokenStore.getToken()
     const endpoint = endpointStore.getEndpoint()
