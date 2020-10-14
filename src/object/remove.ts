@@ -17,9 +17,9 @@ export const remove = async (object_id: string) => {
 
     try {
         const response = await axios({
-            method: "POST",
+            method: "DELETE",
             url: `${endpoint}/v2/delete`,
-            params: {
+            data: {
                 object_id
             },
             headers

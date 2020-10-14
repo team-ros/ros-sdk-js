@@ -16,7 +16,10 @@
     "url": "git+https://github.com/team-ros/ros-sdk-js.git"
   },
   "keywords": [],
-  "authors": [ "ALexander Gauss", "Jovan Stojimirovic"],
+  "authors": [
+    "ALexander Gauss",
+    "Jovan Stojimirovic"
+  ],
   "license": "GPLv3",
   "bugs": {
     "url": "https://github.com/team-ros/ros-sdk-js/issues"
