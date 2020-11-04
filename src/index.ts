@@ -1,46 +1,39 @@
-import { endpointStore, tokenStore } from "./store"
+import { store as endpointStore } from "./store/endpoint"
+import { store as firebaseStore } from "./store/token"
 
-// import user functions
-import { login } from "./user/login"
-import { deleteNow } from "./user/delete"
-
-// import object function
-import { createDir } from "./object/create_dir"
-import { remove } from "./object/remove"
-import { get } from "./object/get"
-import { move } from "./object/move"
-import { upload } from "./object/upload"
+import { createDir } from "./methods/create-dir"
+import { search } from "./methods/search"
+import { get } from "./methods/get"
+import { upload } from "./methods/upload"
+import { remove } from "./methods/remove"
+import { move } from "./methods/move"
 
 export class rosapi {
+
     constructor(endpoint: string) {
         endpointStore.setEndpoint(endpoint)
     }
 
-    token() {
+    auth() {
         return {
-            set(token: string) {
-                tokenStore.setToken(token)
-            },
-            delete(): void {
-                tokenStore.deleteToken()
-            }
+            setFirebase: firebaseStore.setFirebase
+        }
+    }
+
+    object() {
+        return {
+            createDir,
+            search,
+            get,
+            upload,
+            remove,
+            move
         }
     }
 
     user() {
         return {
-            login,
-            deleteNow
+            
         }
-    }
-
-    object() {
-       return {
-           createDir,
-           remove,
-           get,
-           move,
-           upload
-       }
     }
 }
