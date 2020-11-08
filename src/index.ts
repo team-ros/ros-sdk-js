@@ -1,5 +1,5 @@
 import { store as endpointStore } from "./store/endpoint"
-import { store as firebaseStore } from "./store/token"
+import { firebase as FirebaseStore, IFirebaseOptions } from "./store/firebase"
 
 import { createDir } from "./methods/create-dir"
 import { search } from "./methods/search"
@@ -10,17 +10,18 @@ import { move } from "./methods/move"
 
 export class rosapi {
 
-    constructor(endpoint: string) {
+    constructor(endpoint: string, firebaseOptions: IFirebaseOptions) {
         endpointStore.setEndpoint(endpoint)
+        FirebaseStore.initializeApp(firebaseOptions)
+        .then(() => console.log(`Auth Persistance: ${firebaseOptions.authPersistance || "LOCAL"}`))
+        .catch((err) => console.log("Auth Persinstance: ERROR while setting", err))
     }
 
-    auth() {
-        return {
-            setFirebase: firebaseStore.setFirebase
-        }
+    public firebase() {
+        return FirebaseStore.firebase
     }
 
-    object() {
+    public object() {
         return {
             createDir,
             search,
@@ -31,7 +32,7 @@ export class rosapi {
         }
     }
 
-    user() {
+    public user() {
         return {
             
         }

@@ -1,11 +1,11 @@
 import { Request } from "../tools/API"
-import { ERRORS, IErrorMessage } from "../tools/Errors"
+import { ERRORS } from "../tools/Errors"
 import { IErrorResponse, IResponseUpload  } from "../tools/Types"
 import formData from "form-data"
 
-export const upload = async (file: File, name?: string | null, parent?: string | null): Promise<IErrorResponse | IErrorMessage | IResponseUpload> => {
+export const upload = async (file: File, name?: string | null, parent?: string | null): Promise<IErrorResponse | IResponseUpload> => {
 
-    if(!file) return ERRORS.FILE_NOT_SET
+    if(!file) return ERRORS("FILE_NOT_SET")
 
     const form = new formData()
     form.append("file", file)

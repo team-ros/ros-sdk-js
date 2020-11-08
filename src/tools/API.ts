@@ -1,8 +1,10 @@
 import axios from "axios"
-
 import { store as endpointStore } from "../store/endpoint"
-import { store as tokenStore } from "../store/token"
+import { firebase as FirebaseStore } from "../store/firebase"
+import "firebase/auth"
+
 import { ERRORS } from "./Errors"
+import { time } from "console"
 
 interface IRequestOptions {
     url: string
@@ -20,9 +22,9 @@ export const Request = async (options: IRequestOptions) => {
     try {
 
         const endpoint = await endpointStore.getEndpoint()
-        const token = await tokenStore.getToken()
+        const token = await getToken(5)
 
-        if(options.anonymous && !token) return ERRORS.USER_NOT_AUTHENTICATED
+        if(options.anonymous && !token) return ERRORS("USER_NOT_AUTHENTICATED")
 
         const response = await axios({
             method: options.method,
@@ -39,9 +41,28 @@ export const Request = async (options: IRequestOptions) => {
     }
     catch(err) {
         return {
-            ...ERRORS.USER_NOT_AUTHENTICATED,
+            ...ERRORS("REQUEST_ERROR"),
             debug: err
         }
     }
 }
 
+const timeout = (ms: number) => {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+const getToken = async (tries: number) => {
+    try {
+        let counter = 0
+        while(counter <= tries) {
+            const token = await FirebaseStore.firebase.auth().currentUser?.getIdToken()
+            if(token) return token
+            await timeout(500)
+        }
+        return
+    }
+    catch(err) {
+        console.log()
+        return
+    }
+}
