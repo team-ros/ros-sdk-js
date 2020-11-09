@@ -15,6 +15,17 @@ export interface IResponseCreateDir {
 export interface IResponseSearch {
     status: boolean
     message?: string
+    search?: {
+        id: string
+        name: string
+        score: number
+        type: string
+    }[]
+}
+
+export interface IResponseCopy {
+    status: boolean,
+    message?: string
 }
 
 export interface IResponseGetDir {
