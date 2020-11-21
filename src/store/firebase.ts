@@ -26,6 +26,13 @@ class firebaseStore {
             console.log("ROS-SDK-ERROR", err)
         }
     }
+
+    public GoogleAuthProvider() {
+        const Google = new this.firebase.auth.GoogleAuthProvider()
+        Google.addScope("profile")
+        Google.addScope("email")
+        return Google
+    }
 }
 
 export const firebase =  new firebaseStore()

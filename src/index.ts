@@ -37,4 +37,9 @@ export class rosapi {
             
         }
     }
+
+    public Oauth2() {
+        return FirebaseStore.GoogleAuthProvider
+    }
+    
 }
