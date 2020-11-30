@@ -8,6 +8,7 @@ import { upload } from "./methods/upload"
 import { remove } from "./methods/remove"
 import { move } from "./methods/move"
 import { download } from "./tools/download"
+import { persistSession } from "./methods/session-persist"
 
 export class rosapi {
 
@@ -34,9 +35,9 @@ export class rosapi {
         }
     }
 
-    public user() {
+    public util() {
         return {
-            
+            persistSession
         }
     }
 
