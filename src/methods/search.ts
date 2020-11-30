@@ -1,8 +1,8 @@
 import { Request } from "../tools/API"
 import { ERRORS } from "../tools/Errors"
-import { IErrorResponse, IResponseSearch } from "../tools/Types"
+import { IErrorResponse, IResponseGetDir, IResponseSearch } from "../tools/Types"
 
-export const search = async (query: string): Promise<IErrorResponse | IResponseSearch> => {
+export const search = async (query: string): Promise<IErrorResponse | IResponseGetDir> => {
     
     if(!query) return ERRORS("QUERY_NOT_SET")
 

@@ -37,6 +37,8 @@ export interface IResponseGetDir {
         type: 'file' | 'directory'
         size: number
         date: number
+        error_message?: string,
+        error: any
     }[]
     message?: string
 }
