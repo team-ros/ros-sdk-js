@@ -7,6 +7,7 @@ import { get } from "./methods/get"
 import { upload } from "./methods/upload"
 import { remove } from "./methods/remove"
 import { move } from "./methods/move"
+import { download } from "./tools/download"
 
 export class rosapi {
 
@@ -28,7 +29,8 @@ export class rosapi {
             get,
             upload,
             remove,
-            move
+            move,
+            download
         }
     }
 
